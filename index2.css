@@ -1,178 +1,484 @@
- body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0f1117;
-    color: #fff;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  /* ===== HEADER ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f1117;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0f1117;
+  transition: background-color 0.4s ease;
+}
+
+header h2 {
+  color: lightslategray;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: gray;
+}
+
+nav a.active {
+  color: gray;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.85);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+
+  z-index: 10;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-box {
+  position: relative;
+
+  background: #222;
+
+  padding: 60px 80px;
+
+  width: 600px;
+  max-width: 100%;
+
+  max-height: 90vh;
+  overflow-y: auto;
+
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+/* =========================
+   CIRCLES
+========================= */
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 15px;
+}
+
+.circle {
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+
+  background: gray;
+  border-radius: 50%;
+
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.circle.active {
+  background: white;
+}
+
+/* =========================
+   ARROWS
+========================= */
+
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  background: none;
+  border: none;
+
+  color: white;
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+  opacity: 0.6;
+
+  transition: opacity 0.3s;
+}
+
+.arrow-btn:hover {
+  opacity: 1;
+}
+
+.arrow-left {
+  left: 20px;
+}
+
+.arrow-right {
+  right: 20px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 50px;
+
+  padding: 60px;
+}
+
+.hero .text {
+  max-width: 650px;
+}
+
+.hero .text p {
+  line-height: 1.6;
+}
+
+.hero .text h1 {
+  font-size: 45px;
+  line-height: 1.15;
+  margin: 0 0 10px 0;
+}
+
+.hero .text span {
+  color: lightslategray;
+}
+
+/* =========================
+   PROFILE IMAGE
+========================= */
+
+.hero .image {
+  flex-shrink: 0;
+
+  width: 400px;
+  height: 520px;
+
+  background: skyblue;
+
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0% 50%
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+}
+
+/* =========================
+   DOWNLOAD BUTTON
+========================= */
+
+.Download-Button {
+  margin-top: 20px;
+
+  font-size: 14px;
+
+  display: inline-block;
+
+  background: lightslategray;
+  color: white;
+
+  padding: 10px 20px;
+
+  border-radius: 5px;
+
+  border: none;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.3s,
+    color 0.15s;
+}
+
+.Download-Button:hover {
+  color: lightslategray;
+  background-color: white;
+}
+
+/* =========================
+   SOCIAL ICONS
+========================= */
+
+.social-icons {
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+
+  gap: 20px;
+}
+
+.social-icons a {
+  color: white;
+
+  font-size: 25px;
+
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: lightslategray;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 900px) {
+
   header {
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #0f1117;
-    transition: background-color 0.4s ease;
+    padding: 20px 30px;
   }
 
-  header h2 {
-    color: lightslategray;
-  }
-
-  nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
-  }
-
-  nav a:hover {
-    color: gray;
-  }
-
-  nav a.active {
-    color: gray;
-  }
-
-  /* ===== OVERLAY ===== */
-  .overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-    z-index: 10;
-  }
-
-  .overlay.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .overlay-box {
-    position: relative;
-    background: #222;
-    padding: 60px 80px;
-    border-radius: 10px;
-    width: 600px;
-    max-width: 85%;
-    text-align: center;
-  }
-
-  /* ===== Circles ===== */
-  .circle-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    gap: 15px;
-  }
-
-  .circle {
-    width: 5px;
-    height: 5px;
-    background: gray;
-    border-radius: 50%;
-    transition: background 0.3s;
-    cursor: pointer;
-  }
-
-  .circle.active {
-    background: white;
-  }
-
-  /* ===== Arrows inside overlay box ===== */
-  .arrow-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.3s;
-  }
-
-  .arrow-btn:hover {
-    opacity: 1;
-  }
-
-  .arrow-left { left: 20px; }
-  .arrow-right { right: 20px; }
-
-  /* ===== HERO SECTION ===== */
   .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 80px 60px;
+    padding: 50px 30px;
+    gap: 30px;
   }
 
   .hero .text h1 {
-    font-size: 45px;
-    margin: 0;
-  }
-
-  .hero .text span {
-    color: lightslategray;
+    font-size: 38px;
   }
 
   .hero .image {
-    margin-top: -30px;
-    width: 400px;
-    height: 520px;
-    background: skyblue;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    display: flex;
-    align-items: center;
+    width: 320px;
+    height: 430px;
+  }
+}
+
+
+/* ==================================================
+   SMALL TABLET / PORTRAIT
+   ================================================== */
+
+@media (max-width: 700px) {
+
+  header {
+    padding: 20px;
+  }
+
+  header h2 {
+    font-size: 22px;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  /* Stack the hero vertically */
+
+  .hero {
+    min-height: auto;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 50px 20px 60px;
+
+    gap: 50px;
+  }
+
+  .hero .text {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .hero .text h1 {
+    font-size: 34px;
+  }
+
+  .hero .image {
+    width: min(320px, 85vw);
+    height: min(420px, 110vw);
+  }
+}
+
+
+/* ==================================================
+   PHONE
+   ================================================== */
+
+@media (max-width: 500px) {
+
+  header {
+    padding: 18px 15px;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  header h2 {
+    font-size: 21px;
+  }
+
+  nav {
+    gap: 14px;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
-  .hero .image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+  nav a {
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 35px 15px 50px;
+    gap: 40px;
+  }
+
+  .hero .text h1 {
+    font-size: 29px;
+  }
+
+  .hero .text p {
+    font-size: 14px;
+  }
+
+  .hero .image {
+    width: min(280px, 85vw);
+    height: 370px;
   }
 
   .Download-Button {
-    margin-top: 20px;
+    padding: 10px 18px;
+  }
+
+  /* Overlay */
+
+  .overlay {
+    padding: 15px;
+  }
+
+  .overlay-box {
+    padding: 50px 40px;
+    width: 100%;
+  }
+
+  .overlay-box h1 {
+    font-size: 28px;
+  }
+
+  .overlay-box p {
     font-size: 14px;
-    display: inline-block;
-    background: lightslategray;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.56s, color 0.15s;
+    line-height: 1.6;
   }
 
-  .Download-Button:hover {
-    color: lightslategray;
-    background-color: white;
+  .arrow-left {
+    left: 10px;
   }
 
-  /* ✅ Social icons styling */
-  .social-icons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  .arrow-right {
+    right: 10px;
+  }
+}
+
+
+/* ==================================================
+   VERY SMALL PHONES
+   ================================================== */
+
+@media (max-width: 360px) {
+
+  header h2 {
+    font-size: 19px;
   }
 
-  .social-icons a {
-    color: white;
+  nav {
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  .hero .text h1 {
     font-size: 25px;
-    transition: color 0.3s;
   }
 
-  .social-icons a:hover {
-    color: lightslategray;
+  .hero .image {
+    width: 240px;
+    height: 330px;
   }
+
+  .overlay-box {
+    padding: 45px 30px;
+  }
+}
